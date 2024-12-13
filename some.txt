@@ -1,0 +1,16 @@
+simon is maaaa boy  \n
+so i am about to test this shit     \n
+if you know you know    \n
+and if you dont know now you know   \n
+
+
+buffer == "simon is maaaa boy  \n
+           so i am about"
+
+s == "so i am about"
+
+buffer == "to test this shit     \n
+           if you know"
+
+s == strjoin (s, buffer) == "so i am about to test this shit     \n
+                            if you know"
