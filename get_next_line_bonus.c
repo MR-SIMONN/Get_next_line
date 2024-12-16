@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-hai <moel-hai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 03:20:54 by moel-hai          #+#    #+#             */
-/*   Updated: 2024/12/16 04:55:35 by moel-hai         ###   ########.fr       */
+/*   Created: 2024/12/16 03:27:56 by moel-hai          #+#    #+#             */
+/*   Updated: 2024/12/16 04:53:12 by moel-hai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int no_newline(char *s)
 {
@@ -81,8 +81,7 @@ char*   update_it(char *src)
         str[j++] = src[i++];
         len--;
     }
-    str[j] = '\0';
-    return (free(src), src = NULL, str);
+    return (str[j] = '\0', free(src), src = NULL, str);
 }
 
 char *get_next_line(int fd)
@@ -90,27 +89,27 @@ char *get_next_line(int fd)
     char        *buffer;
     char        *line;
     int         readed;
-    static char *s;
+    static char *s[OPEN_MAX];
 
     if (fd < 0 || BUFFER_SIZE <= 0  || BUFFER_SIZE > INT_MAX)
-        return (free (s),s = NULL, NULL);
-   (1) && (readed = 1, buffer = malloc (sizeof(char) * BUFFER_SIZE + 1));
+        return (free (s[fd]),s[fd] = NULL, NULL);
+    (1) && (readed = 1, buffer = malloc (sizeof(char) * BUFFER_SIZE + 1));
     if (!buffer)
-        return (free (s), s = NULL, NULL);
-    while (no_newline(s) && readed)
+        return (free (s[fd]), s[fd] = NULL, NULL);
+    while (no_newline(s[fd]) && readed)
     {
         readed = read(fd, buffer, BUFFER_SIZE);
         if (readed < 0)
-            return (free(s),s = NULL ,free(buffer) ,NULL);  
+            return (free(s[fd]),s[fd] = NULL ,free(buffer) ,NULL);  
         buffer[readed] = '\0';
-        s = ft_strjoin(s, buffer);
+        s[fd] = ft_strjoin(s[fd], buffer);
     }
-    line = clean_my_line(s);
+    line = clean_my_line(s[fd]);
     if (!line)
-        return (free(s), s = NULL, free(buffer), NULL);
-    s = update_it(s);
+        return (free(s[fd]), s[fd] = NULL, free(buffer), NULL);
+    s[fd] = update_it(s[fd]);
     if (ft_strlen(line) == 0)
-        return (free(s), s = NULL, free(buffer), free(line), NULL);
+        return (free(s[fd]), s[fd] = NULL, free(buffer), free(line), NULL);
     return (free(buffer), line);
 }
 

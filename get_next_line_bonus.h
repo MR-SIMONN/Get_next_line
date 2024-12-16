@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moel-hai <moel-hai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 03:00:29 by moel-hai          #+#    #+#             */
-/*   Updated: 2024/12/16 04:00:35 by moel-hai         ###   ########.fr       */
+/*   Created: 2024/12/16 03:29:29 by moel-hai          #+#    #+#             */
+/*   Updated: 2024/12/16 03:37:04 by moel-hai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+#define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42
